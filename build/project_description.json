@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "main",
-    "project_version":    "1",
+    "project_version":    "6aba870-dirty",
     "project_path":       "C:/Users/Admin/Documents/NPK/Projects/EMPI-1/Program/Hardware/sample_project",
     "idf_path":           "C:/Users/Admin/esp/v5.2.1/esp-idf",
     "build_dir":          "C:/Users/Admin/Documents/NPK/Projects/EMPI-1/Program/Hardware/sample_project/build",
