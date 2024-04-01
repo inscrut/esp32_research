@@ -46,7 +46,7 @@ void logger_task(void *pvParameters){
     for(;;){
 
         if(xQueueReceive(qlog_1, &buff, (TickType_t)5)){
-            printf("LOGGER[%d]: %s\n", buff.MessageID, buff.Data);
+            printf("LOGGER[%d/%d]:(%d): %s\n", uxQueueMessagesWaiting(qlog_1), uxQueueSpacesAvailable(qlog_1), buff.MessageID, buff.Data);
         }
 
         vTaskDelay(10);
@@ -63,6 +63,9 @@ void task1(void *pvParameters){
         sprintf(myMsg.Data, "Task suspend");
         send_logTask(&myMsg);
         vTaskSuspend(NULL);
+
+        sprintf(myMsg.Data, "Task alive!");
+        send_logTask(&myMsg);
     }
 
     vTaskSuspend(NULL);
@@ -79,6 +82,11 @@ void task2(void *pvParameters){
         send_logTask(&myMsg);
 
         counter++;
+
+        if(counter >= 10){
+            vTaskResume(htask_1);
+            counter = 0;
+        }
 
         vTaskDelay(pdMS_TO_TICKS(500));
     }
