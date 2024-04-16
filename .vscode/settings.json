@@ -9,5 +9,18 @@
   "idf.portWin": "COM7",
   "files.associations": {
     "stdio.h": "c"
-  }
+  },
+
+  "userHome": "C:/Users/Admin", //C:\Users\Admin
+  "esp_board_name": "esp32-wrover-kit-3.3v.cfg",
+
+  "esp_idf_path":"${config:userHome}/esp/esp-idf",
+  "esp_idf_tools": "${config:esp_idf_path}/tools",
+
+  "esp_toolchain_root": "${config:userHome}/.espressif",
+  "esp_binutils_path": "${config:esp_toolchain_root}/tools/esp32ulp-elf/2.35_20220830/esp32ulp-elf/bin",
+  "esp_openocd_path": "${config:esp_toolchain_root}/tools/openocd-esp32/v0.12.0-esp32-20230921/openocd-esp32/bin",
+  "esp_board_cfgs": "${config:esp_toolchain_root}/tools/openocd-esp32/v0.12.0-esp32-20230921/openocd-esp32/share/openocd/scripts/board",
+  "esp_python_path": "${config:esp_toolchain_root}/python_env/idf5.2_py3.11_env",
+  "esp_toolchain_path": "${config:esp_toolchain_root}/tools/xtensa-esp-elf-gdb/12.1_20231023/xtensa-esp-elf-gdb/bin"
 }

@@ -235,3 +235,12 @@
 40	187	0	C:/Users/Admin/Documents/NPK/Projects/EMPI-1/Program/Hardware/sample_project/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	9d680a5192c7ae71
 140	394	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	9d680a5192c7ae71
 140	394	0	C:/Users/Admin/Documents/NPK/Projects/EMPI-1/Program/Hardware/sample_project/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	9d680a5192c7ae71
+67	319	7349553232066181	esp-idf/esp_bootloader_format/CMakeFiles/__idf_esp_bootloader_format.dir/esp_bootloader_desc.c.obj	26d6176e5a35d05e
+320	506	7349553234026326	esp-idf/esp_bootloader_format/libesp_bootloader_format.a	1f0cb9bc026d0754
+506	1219	7349553241039417	bootloader.elf	103a96e518b93202
+1219	1958	7349553248529699	.bin_timestamp	41171d2843448de5
+1219	1958	7349553248529699	C:/Users/Admin/Documents/NPK/Projects/EMPI-1/Program/Hardware/sample_project/build/bootloader/.bin_timestamp	41171d2843448de5
+1958	2138	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	9d680a5192c7ae71
+1958	2138	0	C:/Users/Admin/Documents/NPK/Projects/EMPI-1/Program/Hardware/sample_project/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	9d680a5192c7ae71
+63	251	0	esp-idf/esptool_py/CMakeFiles/bootloader_check_size	9d680a5192c7ae71
+63	251	0	C:/Users/Admin/Documents/NPK/Projects/EMPI-1/Program/Hardware/sample_project/build/bootloader/esp-idf/esptool_py/CMakeFiles/bootloader_check_size	9d680a5192c7ae71
