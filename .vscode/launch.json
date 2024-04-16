@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      //"preLaunchTask": "preRun",
+      "preLaunchTask": "preRun",
       "name": "ESP-PROG OpenOCD",
       "type": "cppdbg",
       "request": "launch",

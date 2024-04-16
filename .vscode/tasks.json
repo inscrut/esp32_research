@@ -5,7 +5,7 @@
       "label": "preRun",
       "type": "shell",
       "windows": {
-        "command": "clear & openocd.exe -f board/esp32-wrover-kit-3.3v.cfg & exit",
+        "command": "clear ; openocd.exe -f board/esp32-wrover-kit-3.3v.cfg ; exit",
         "options": {
           "env": {
             "PATH": "${env:PATH};${config:idf.customExtraPaths}"
