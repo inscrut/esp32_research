@@ -108,4 +108,6 @@ XUNIT_RESULT*.xml
 .vale/styles/*
 
 build/*
-/build/*
+build/.ninja_deps
+build/*_log
+build/bootloader/*_log

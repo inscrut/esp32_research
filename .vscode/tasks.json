@@ -2,6 +2,13 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "preRun",
+      "type": "shell",
+      "windows":{
+        "command": "clear & openocd -c \"set ESP_RTOS none\" -f board/esp32-wrover-kit-3.3v.cfg & exit"
+      }
+    },
+    {
       "label": "Build - Build project",
       "type": "shell",
       "command": "${config:idf.pythonBinPath} ${config:idf.espIdfPath}/tools/idf.py build",
