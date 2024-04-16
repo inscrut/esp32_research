@@ -18,7 +18,81 @@
 #define GPIO_OUTPUT_PINS (1ULL << BOARD_LED)
 #define GPIO_INPUT_PINS (1ULL << BOARD_BTN)
 
+TaskHandle_t htask_1 = NULL;
+TaskHandle_t htask_2 = NULL;
 
+QueueHandle_t qlog_1 = NULL;
+typedef struct
+{
+    char MessageID;
+    char Data[ 50 ];
+} LogMessage;
+
+void send_logTask(LogMessage *_msg){
+    xQueueSendToBack(qlog_1, _msg, (TickType_t)0);
+}
+
+void logger_task(void *pvParameters){
+
+    LogMessage buff;
+    
+    qlog_1 = xQueueCreate(5, sizeof(LogMessage));
+
+    if( qlog_1 == 0 ){
+        ESP_LOGE("LOGGER", "ERROR: Fail create logger task!");
+        vTaskSuspend(NULL);
+    }
+
+    for(;;){
+
+        if(xQueueReceive(qlog_1, &buff, (TickType_t)5)){
+            printf("LOGGER[%d/%d]:(%d): %s\n", uxQueueMessagesWaiting(qlog_1), uxQueueSpacesAvailable(qlog_1), buff.MessageID, buff.Data);
+        }
+
+        vTaskDelay(10);
+    }
+
+}
+
+void task1(void *pvParameters){
+
+    LogMessage myMsg = {0, "Task create"};
+    send_logTask(&myMsg);
+
+    for(;;){
+        sprintf(myMsg.Data, "Task suspend");
+        send_logTask(&myMsg);
+        vTaskSuspend(NULL);
+
+        sprintf(myMsg.Data, "Task alive!");
+        send_logTask(&myMsg);
+    }
+
+    vTaskSuspend(NULL);
+}
+
+void task2(void *pvParameters){
+    LogMessage myMsg = {1, "Task create"};
+    send_logTask(&myMsg);
+
+    uint8_t counter = 0;
+
+    for(;;){
+        sprintf(myMsg.Data, "Counter: %d", counter);
+        send_logTask(&myMsg);
+
+        counter++;
+
+        if(counter >= 10){
+            vTaskResume(htask_1);
+            counter = 0;
+        }
+
+        vTaskDelay(pdMS_TO_TICKS(500));
+    }
+
+    vTaskSuspend(NULL);
+}
 
 void app_main(void)
 {
@@ -47,6 +121,11 @@ void app_main(void)
     //enable pull-up mode
     io_conf.pull_up_en = 1;
     gpio_config(&io_conf);
+
+    xTaskCreatePinnedToCore(logger_task, "LOGGER", 4096, NULL, 10, NULL, 0);
+
+    xTaskCreatePinnedToCore(task1, "Task1", 4096, NULL, 10, &htask_1, 0);
+    xTaskCreatePinnedToCore(task2, "Task2", 4096, NULL, 10, &htask_2, 1);
 
     int cnt = 0;
     while (1) {
